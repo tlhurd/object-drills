@@ -185,3 +185,75 @@ function decodeWord(string) {
 }
 decodeWord('ate breath crate death');
 
+// Object drill 7
+
+function createCharacter(name, nickname, race, origin, weapon, attack, defense) {
+  return {
+    name,
+    nickname,
+    race,
+    origin,
+    weapon,
+    attack,
+    defense,
+    describe: function() {
+      console.log(`${name} is a ${race} from ${origin} who uses ${weapon}.`);
+    },
+    evaluateFight: function(character){
+      let x = character.defense - this.attack;
+      if (character.defense > this.attack){
+        x = 0;
+      }
+      if (x < 0) {
+        x *= -1;
+      }
+
+      let y = this.defense - character.attack;
+      if (this.defense > character.attack){
+        y = 0;
+      }
+      if (y < 0) {
+        y *= -1;
+      }
+
+      console.log(`"Your opponent takes ${x} damage and you receive ${y} damage"`);
+    }
+  };
+}
+
+// character array
+
+let characters = [
+  createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 'a wizard staff', 10, 6),
+  createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 'the Ring', 2, 1),
+  createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 'Sting and Barrow Blade', 3,2),
+  createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 'Anduril', 6, 8),
+  createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 'a Bow and Arrow', 8, 5),
+  createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 'Hadhafang', 6, 8)
+];
+
+// Find Aragorn
+
+let found = characters.find(function (human) {
+  return human.nickname === 'aragorn';
+});
+
+found.describe();
+
+
+// Hobbit filter
+
+let hobbits = characters.filter(function (character) {
+  return character.race === 'Hobbit';
+});
+
+console.log(hobbits);
+
+// Attack filter
+
+let attack = characters.filter(function (fighter) {
+  return fighter.attack > 5;
+});
+
+console.log(attack);
+
