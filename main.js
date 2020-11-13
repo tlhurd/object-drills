@@ -11,7 +11,7 @@ const loaf = {
   }
 };
 
- console.log(loaf.hydration());
+console.log(loaf.hydration());
 
 // Object drill 2
 
@@ -24,7 +24,7 @@ const newObj = {
 };
 
 
- for (const property in newObj) {
+for (const property in newObj) {
   console.log(`${property}: ${newObj[property]}`);
 }
 
@@ -42,7 +42,7 @@ const arr = {
   ]
 };
 
- console.log(arr.meals[3]);
+console.log(arr.meals[3]);
 
 // Object drill 4 & 5
 
@@ -88,7 +88,7 @@ function loopObjects(){
   }
 }
 
-// loopObjects();
+loopObjects();
 
 function loopAgain() {
   for (let i = 0; i < array.length; i ++){
@@ -101,3 +101,87 @@ function loopAgain() {
 }
 
 loopAgain();
+
+// Object drill 6
+
+const cipher = {
+  a: 2,
+  b: 3,
+  c: 4,
+  d: 5,
+};
+
+/*function decode(word){
+  for (let i = 0; i < cipher.length; i++){
+    if (word.charAt(0) === cipher[i]) {
+      console.log(`${word[cipher[i]]}`);
+    } else {
+      return ' ';
+    }
+  }
+}
+*/
+
+
+
+/*
+function decode(encodedWord) {
+  let number = 0;
+  let letter = encodedWord.charAt(0);
+  for (const property in cipher) {
+    if (letter === `${property}`) {
+      number = `${cipher[property]}`;
+    }
+  }
+  let encodedLetter = encodedWord.charAt(number);
+  if (number === 0) {
+    return ' ';
+  } else {
+    return encodedLetter;
+  }
+}
+
+decode('twelve');
+
+function decodeWord(string){
+  let check = string.split(' ');
+  let array = [];
+  for (let i = 0; i < check.length; i++){
+    array.push(check[i]);
+  }
+  for (let a = 0; a < array.length; a ++){
+    console.log(decode(array[a]));
+  }
+}
+
+decodeWord('eat my shorts')
+*/
+
+function decode(encodedWord){
+  let letter = encodedWord.charAt(0);
+  let number = 0;
+  for (const key in cipher) {
+    if (letter === `${key}`) {
+      number = `${cipher[key]}`;
+    }
+  }
+  let encodedLetter = `${encodedWord.charAt(number - 1)}`;
+  if (number === 0) {
+    return ' ';
+  } else {
+    return encodedLetter;
+  }
+}
+
+function decodeWord(string) {
+  let check = string.split(' ');
+  let array = [];
+  for (let i = 0; i < check.length; i++){
+    array.push(check[i]);
+  }
+  for (let a = 0; a < array.length; a ++){
+    console.log(decode(array[a]));
+  }
+}
+decodeWord('ate breath crate death');
+
