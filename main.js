@@ -38,12 +38,44 @@ const arr = {
 
 console.log(arr.meals[3]);
 
-const one = {
 
-}
+
+
+const one = {
+  name: 'Harry Potter',
+  jobTitle: 'Hero-Wizard'
+};
 const two = {
-  
+  name: 'benjaminButton',
+  jobTitle: 'oldMan'
+};
+const three = {
+  name: 'Mr.Nobody',
+  jobTitle: 'Killjoy'
+};
+const four = {
+  name: 'Grandpa Piss',
+  jobTitle: 'Emperor'
+};
+const five = {
+  name: 'Final Pam',
+  jobTitle: 'Goddess'
+};
+
+const array = [
+  one, 
+  two,
+  three,
+  four,
+  five
+];
+
+function loopObjects(){
+  for (let i = 0; i < array.length; i ++){
+    for(const value in array[i]) {
+      console.log(`${value}: ${array[i][value]}`);
+    }
+  }
 }
-const three =
-const four =
-const five =
+
+loopObjects();
